@@ -1,0 +1,14 @@
+type,name,rating,color
+Application,Microsoft Excel,9,B71C1C
+Application,TIBCO Spotfire,8,C62828
+Application,Microsoft Access,7,D32F2F
+Application,Tableau,6,E53935
+Coding,VBA,8,1B5E20
+Coding,SQL,7,2E7D32
+Coding,HTMl / CSS,7,388E3C
+Coding,XML,7,43A047
+Coding,JavaScript / jQuery,6,4CAF50
+Coding,Python,5,66BB6A
+Coding,R,4,81C784
+Languages,Vietnamese,9,006064
+Languages,English,7,00838F

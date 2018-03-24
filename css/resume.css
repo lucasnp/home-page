@@ -1,0 +1,52 @@
+/* Rules for sizing the icon.*/
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background.*/
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/*Rules for using icons as white on a dark background.*/
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+
+.material-icons {
+    vertical-align: middle;
+}
+
+i + span {
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.img-logo {
+    vertical-align: middle;
+    min-width: 65px;
+    max-height: 80px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+ul {
+    padding-left: 15px;
+}
+
+.avatar {
+    float: left;
+    margin-right: 15px;
+    max-width: 120px;
+}
+
+.list-group .panel-body:first-of-type {
+    padding-top:0px;
+}
+
+.panel-body a img {
+    margin-right: 15px;
+}

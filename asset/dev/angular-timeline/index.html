@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Angular Timeline Example</title>
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" href="../../../css/bootswatch-bootstrap.css" />
+      <link rel="stylesheet" href="angular-timeline.css" />
+
+      <link rel="stylesheet" href="angular-timeline-animations.css" />
+    </head>
+    
+    <body ng-app='example'>
+    
+        <style>
+          body { background-color: aliceblue; }
+          timeline-footer { background-color: aliceblue; }
+        </style>
+        
+        <div class="container-fluid" ng-controller='employmentCtrl as emp'>
+        
+          <timeline>
+            <timeline-event ng-repeat="job in emp.jobs">
+        
+              <!-- uses angular-scroll-animate to give it some pop -->
+              <timeline-badge class="info">
+        	      <i class="glyphicon glyphicon-check"></i>
+              </timeline-badge>
+        
+        		  <!-- uses angular-scroll-animate to give it some pop -->
+              <timeline-panel>
+                <timeline-heading>
+                    <!-- job heading -->
+                    <div>
+                        <a href='{{job.url}}' target='_blank'>
+                            <img ng-src="../../../{{job.logo}}" class='img-responsive pull-left' style='min-width:65px; max-height:80px;'></img>
+                            <h4>{{job.company}}</h4>
+                        </a>
+                        
+                        <h5><strong>{{job.title}}</strong></h5>
+                        {{job.start_date | date:'yyyy'}} - {{job.end_date | date:'yyyy'}}
+                    </div>
+                    <!-- end of job heading -->
+                    <!-- job content -->
+                    <div class='panel-body'>
+                        <div ng-repeat='desc in job.descriptions'>
+                            - {{desc.heading}}
+                            <div ng-repeat='detail in desc.details'>
+                                + {{detail}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of job content -->
+                                
+                </timeline-heading>
+              </timeline-panel>
+            </timeline-event>
+          </timeline>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+                
+        <script src="angular-sanitize.js"></script>
+        
+        <script src="angular-scroll-animate.js"></script>
+        <script src="angular-timeline.js"></script>
+        
+        <script src="vertical-timeline.js"></script>
+    
+        <!--
+        <script src="../../../js/resume.js"></script>
+        <script src="app.js"></script>
+        <script src="example-controller.js"></script>
+        -->
+    
+    </body>
+</html>

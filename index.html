@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app='resume'>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>TaiNguyen.Me</title>
+        
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-41441821-3', 'auto');
+          ga('send', 'pageview');
+        
+        </script>
+
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="css/bootswatch-bootstrap.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <!-- Material Icon -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        
+        <!-- Custome CSS -->
+        <link rel="stylesheet" href="css/resume.css">
+        
+        <!-- Angular -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+        <script type='text/javascript' src='js/resume.js'></script>
+    </head>
+    
+    <body>
+        <!--header-->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container nemo-header">
+                <div class='row'>
+                    
+                    <div class='col-sm-7 col-xs-2'>
+                        <h3 class='visible-xs' style='margin-top:15px;'>
+                            <a href='#' style='color:white;'><strong>Tai</strong></a>
+                        </h3>
+                        
+                        <div class='hidden-xs panel-body' style='display:table;'>
+                            <span>
+                                <img src='asset/image/tainguyen.jpg' class='img-circle hidden-sm hidden-xs avatar' style='vertical-align: middle;display: table-cell;'></img>
+                            </span>
+                            <span style='vertical-align:middle;display: table-cell;'>
+                                <h4>Tai Nguyen</h4>
+                                <p>
+                                    Data Analyst with focus on data analysis and visualization.
+                                    Beside work, I am interested in gadgets, data visualization, web design and general technology.
+                                </p>
+                            </span>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class='col-sm-5 col-xs-10' style='margin-top:15px;' ng-controller='contactCtrl as contact'>
+                        <!-- vertical list -->
+                        <ul class='hidden-xs' style='list-style-type:none;'>
+                            <li style='margin-bottom:5px;' ng-repeat='info in contact.infos' ng-if="info.type!='G+'">
+                                <a href="{{info.url}}" target='{{info.target}}' style='color:white;'>
+                                    <i class='fa fa-{{info.icon}} fa-lg'></i>
+                                    <span>{{info.text}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <!--horizontal list -->
+                        <ul class='visible-xs list-inline text-right' style='list-style-type:none;'>
+                            <li style='padding-left:30px;' ng-repeat='info in contact.infos' ng-if="info.type!='G+'">
+                                <a href="{{info.url}}" target='{{info.target}}' style='color:white;' data-toggle=tooltip data-placement='bottom' title='{{info.text}}'>
+                                    <i class='fa fa-{{info.icon}} fa-2x'></i>
+                                </a>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </nav>
+        <!--end of header-->
+        
+        <!-- body -->
+        <div class='container nemo-body'>
+            <div class='row'>
+                <!-- experience -->
+                <div class='col-sm-7' ng-controller='employmentCtrl as emp'>
+                    <div class='panel panel-info'>
+                        <!-- panel heading -->
+                        <div class='panel-heading'>
+                            <h3>
+                                <i class='material-icons md-36'>business</i>
+                                <span>Employment</span>
+                            </h3>
+                        </div>
+                        
+                        <!-- panel body -->
+                        <div class="list-group">
+                            <div class="list-group-item" ng-repeat='job in emp.jobs' id='{{job.company}}-{{job.title}}'>
+                                
+                                <!-- job heading -->
+                                <div class='panel-body'>
+                                    <a href='{{job.url}}' target='_blank'>
+                                        <img ng-src="{{job.logo}}" class='img-responsive pull-left img-logo'></img>
+                                        <h4>{{job.company}}</h4>
+                                    </a>
+                                    
+                                    <h5><strong>{{job.title}}</strong></h5>
+                                    {{job.start_date | date:'yyyy'}} - {{job.end_date | date:'yyyy'}}
+                                </div>
+                                <!-- end of job heading -->
+                                
+                                <!-- job content -->
+                                <div class='panel-body'>
+                                    <ul>
+                                        <li ng-repeat='desc in job.descriptions'>
+                                            {{desc.heading}}
+                                            <ul>
+                                                <li ng-repeat='detail in desc.details'>
+                                                    {{detail}}
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- end of job content -->
+
+                            </div>
+                        </div>
+                        <!-- end of panel body -->
+                        
+                    </div>
+                </div>
+                <!-- end of experience -->
+                
+                <div class='col-sm-5'>
+                    <!-- education -->
+                    <div class='panel panel-info' ng-controller='educationCtrl as edu'>
+                        <!-- panel heading -->
+                        <div class='panel-heading'>
+                            <div class='panel-title'>
+                                <h3>
+                                    <i class='material-icons md-36'>school</i>
+                                    <span>Education</span>
+                                </h3>
+                            </div>
+                        </div>
+                        
+                        <!-- panel body -->
+                        <div class='list-group'>
+                            <div class='list-group-item' ng-repeat='degree in edu.degrees'>
+                                
+                                <!-- degree heading -->
+                                <div class='panel-body'>
+                                    <a href='{{degree.url}}' target='_blank'>
+                                        <img ng-src="{{degree.logo}}" class='img-responsive pull-left img-logo'></img>
+                                        <h4>{{degree.school}}</h4>
+                                    </a>
+                                    <h6>
+                                        <strong>
+                                            <span data-toggle=tooltip data-placement='right' title='{{degree.title}}'>
+                                                {{degree.title_short}}
+                                            </span>
+                                        </strong>
+                                    </h6>
+                                    <!-- <h6>{{degree.grad_date | date:'MMM yyyy'}}</h6> -->
+                                </div>
+                                <!-- end of degree heading -->
+                                
+                                <!-- degree content -->
+                                <div class='panel-body'>
+                                    <ul>
+                                        <li><strong>Major:</strong> {{degree.majors[0]}}</li>
+                                        <li><strong>Minor:</strong> {{degree.minors[0]}}</li>
+                                        <li><strong>GPA:</strong> {{degree.gpa}}</li>
+                                        <!--
+                                        <br>
+                                        <strong>Honors:</strong>
+                                        <ul>
+                                            <li ng-repeat='honor in degree.honors'>{{honor}}</li>
+                                        </ul>
+                                        -->
+                                    </ul>
+                                </div>
+                                <!-- end of degree content -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of education -->
+                    
+                    <!-- experience -->
+                    <div class='panel panel-info' ng-controller='experienceCtrl as myExp'>
+                        <!-- panel heading -->
+                        <div class='panel-heading'>
+                            <div class='panel-title'>
+                                <h3>
+                                    <i class='material-icons md-36'>storage</i>
+                                    <span>Experiences</span>
+                                </h3>
+                            </div>
+                        </div>
+                        
+                        <!-- panel body -->
+                        <div class='list-group'>
+                            <div class='list-group-item' ng-repeat='exp in myExp.experiences' ng-if='exp.type!="Languages"'>
+                                <!-- experience heading -->
+                                <div class='panel-body'>
+                                    <h5>
+                                        <i class='material-icons md-24'>{{exp.icon}}</i>
+                                        <span>{{exp.type}}</span>
+                                    </h5>
+                                </div>
+                                <!-- end of experience heading -->
+                                
+                                <!-- experience content -->
+                                <div class='panel-body'>
+                                    <ul>
+                                        <li ng-repeat='skill in exp.skills'>
+                                            <img ng-src='asset/image/{{skill.logo}}' style='height:40px;' ng-show='{{skill.logo != null}}'></img>
+                                            <div ng-hide='{{skill.logo != null}}'>{{skill.name}}</div>
+                                            <div class='progress'>
+                                                <div class='progress-bar progress-bar-primary' style='width: {{skill.rating * 10}}%;'></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- end of experience content -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='row'>
+                <div class='col-xs-12'>
+                    <!-- works -->
+                    <div class='panel panel-info' ng-controller='workCtrl as myWork'>
+                        <!-- panel heading -->
+                        <div class='panel-heading'>
+                            <div class='panel-title'>
+                                <h3>
+                                    <i class='material-icons md-36'>collections</i>
+                                    <span>Works</span>
+                                </h3>
+                            </div>
+                        </div>
+
+                        <!-- panel body -->
+                        <div class='list-group'>
+                            <div class='list-group-item' ng-repeat='work in myWork.works'>
+                                <!-- work heading -->
+                                <div class='panel-body'>
+                                    <h5>
+                                        <i class='material-icons md-24'>{{work.icon}}</i>
+                                        <span>{{work.name}}</span>
+                                    </h5>
+                                </div>
+                                <!-- end of work heading -->
+                                
+                                <!-- work content -->
+                                <div class='panel-body'>
+                                    <div id="carousel-work-{{$index}}" class="carousel slide" data-ride="carousel">
+                                    	<!-- Wrapper for slides -->
+                                    	<div class="carousel-inner" role="listbox">
+                                    		<div class="item" ng-repeat='sample in work.samples' ng-class="{'active':$index==0}">
+                                    			<img ng-src='asset/image/works/{{sample}}' style='width:90%; margin:auto;'></img>
+                                    		</div>
+                                    	</div>
+                                    	<!-- Controls -->
+                                    	<a class="left carousel-control" href="#carousel-work-{{$index}}" role="button" data-slide="prev">
+                                        	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        	<span class="sr-only">Previous</span>
+                                    	</a>
+                                    	<a class="right carousel-control" href="#carousel-work-{{$index}}" role="button" data-slide="next">
+                                        	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        	<span class="sr-only">Next</span>
+                                    	</a>
+                                    </div>
+                                </div>
+                                <!-- end of work content -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--
+            <div class='row'>
+                <div class='col-xs-12'>
+                    <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
+                    <div class='tableauPlaceholder' style='width: 982px; height: 742px;'>
+                        <noscript>
+                            <a href='#'><img alt='Sheet 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ti&#47;timeline_10&#47;Sheet1&#47;1_rss.png' style='border: none' /></a>
+                        </noscript>
+                        <object class='tableauViz' width='982' height='742' style='display:none;'>
+                            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                            <param name='site_root' value='' />
+                            <param name='name' value='timeline_10&#47;Sheet1' />
+                            <param name='tabs' value='no' />
+                            <param name='toolbar' value='yes' />
+                            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ti&#47;timeline_10&#47;Sheet1&#47;1.png' />
+                            <param name='animate_transition' value='yes' />
+                            <param name='display_static_image' value='yes' />
+                            <param name='display_spinner' value='yes' />
+                            <param name='display_overlay' value='yes' />
+                            <param name='display_count' value='yes' />
+                            <param name='showVizHome' value='no' />
+                            <param name='showTabs' value='y' />
+                            <param name='bootstrapWhenNotified' value='true' />
+                        </object>
+                    </div>
+                </div>
+            </div>
+            -->
+        </div>
+
+        <!-- end of body -->
+        <script type="text/javascript">
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+            
+            $('.carousel').carousel({
+                  interval: 2000
+            })
+        </script>
+    </body>
+</html>
